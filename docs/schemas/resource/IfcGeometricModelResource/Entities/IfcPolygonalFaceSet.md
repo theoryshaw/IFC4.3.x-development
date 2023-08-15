@@ -21,7 +21,7 @@ Depending on the provision of _PnIndex_ the indices point either directly into t
 
 Figure 2 &mdash; Polygonal face set geometry
 
-Figure 2 shows an <em>IfcFacetedFaceSet</em> represented by:
+Figure 2 shows an <em>IfcPolygonalFaceSet</em> represented by:
 
 ```
 #1 IfcIndexedPolygonalFace: ((1, 2, 6, 5)
@@ -34,12 +34,11 @@ Figure 2 shows an <em>IfcFacetedFaceSet</em> represented by:
 ((0.,0.,0.), (1.,0.,0.), (1.,1.,0.), (0.,1.,0.), (0.,0.,2.), (1.,0.,2.), (1.,1.,2.), (0.,1.,2.))
 ```
 
-> NOTE  The definition of _IfcFacetedFaceSet_ is based on the **indexedFaceSet** defined in ISO/IEC 19775-1
+> NOTE  The definition of _IfcPolygonalFaceSet_ is based on the **indexedFaceSet** defined in ISO/IEC 19775-1
 
 > HISTORY  New entity in IFC4 Addendum 2.
 
-{ .spec-head}
-Informal Propositions:
+## Informal Propositions
 
 1. If _Closed_ = TRUE, the same topological constraints as imposed by an faceted boundary representation shall be safisfied. In particular:
     * each face shall be unique;
@@ -47,6 +46,9 @@ Informal Propositions:
     * the topological normal at each point on the boundary of the polygonal face set shall point away from the material of the solid.
 
 ## Attributes
+
+### Closed
+Indication whether the face set is a closed shell (TRUE) or an open shell (FALSE). If omitted no such information can be asserted.
 
 ### Faces
 The list of polygonal faces, with or without inner loops, that bound the faceted face set.

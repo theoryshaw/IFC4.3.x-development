@@ -10,8 +10,7 @@ The _IfcPointOnCurve_ is a point defined by a parameter value of its defining cu
 
 > HISTORY  New entity in IFC2x2.
 
-{ .spec-head}
-Informal Propositions:
+## Informal Propositions
 
 1. The value of the point parameter shall not be outside the parametric range of the curve.
 
@@ -22,6 +21,3 @@ The curve to which point parameter relates.
 
 ### PointParameter
 The parameter value of the point location.
-
-### Dim
-The space dimensionality of this class, determined by the space dimensionality of the basis curve.

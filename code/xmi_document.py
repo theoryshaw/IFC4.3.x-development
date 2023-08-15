@@ -50,7 +50,7 @@ logging.basicConfig(level=logging.WARNING, stream=sys.stdout)
 is_iso = os.environ.get('ISO', '0') == '1'
 
 if is_iso:
-    SCHEMA_NAME = "IFC4X3"
+    SCHEMA_NAME = "IFC4X3_ADD1"
 else:
     SCHEMA_NAME = "IFC4X3_DEV"
 
@@ -543,8 +543,8 @@ class xmi_document:
                             refs = refs + corresponding_types
 
                 # TEMPORARY SKIP SOME OLD PSET DEFINITIONS
-                if (c|"project").author == 'IQSOFT':
-                    continue
+                # if (c|"project").author == 'IQSOFT':
+                #     continue
 
                 set_definition = []
                 for attr in self.xmi.by_id[c.idref]/"ownedAttribute":

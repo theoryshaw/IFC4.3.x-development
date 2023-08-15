@@ -1,6 +1,6 @@
 # IfcDoorTypeOperationEnum
 
-This enumeration defines the basic ways to describe how an _IfcDoor_ or _IfcDoorType_ operate, as shown in Figure 1. It combines the partitioning of the access barrier into single or multiple panels and the operation types of those panels.
+This enumeration defines the basic ways to describe how an _IfcDoor_ or _IfcDoorType_ operate, as shown in the figures below. It combines the partitioning of the access barrier into single or multiple panels and the operation types of those panels.
 
 In the most common case of swinging doors the _IfcDoorTypeOperationEnum_ defined the hinge side (left hung or right hung) and the opening direction (opening to the left, opening to the right). Whether the door opens inwards or outwards is determined by the local coordinate system of the _IfcDoor_
 
@@ -37,8 +37,8 @@ Door with one panel that opens (swings) to the right. The hinges are on the righ
 
 ![single swing right](../../../../figures/ifcdoortypeenum-fig02b.gif)
 
-### DOUBLE_PANEL_SINGLE_SWING
-Door with two panels, one opens (swings) to the left the other opens (swings) to the right.
+### DOUBLE_DOOR_SINGLE_SWING
+Door with two panels, one opens (swings) to the left, the other opens (swings) to the right.
 
 > NOTE  Direction of swing (whether in or out) is determined at the <em>IfcDoor</em>.
 
@@ -46,14 +46,14 @@ Door with two panels, one opens (swings) to the left the other opens (swings) to
 
 ![double swing](../../../../figures/ifcdoortypeenum-fig03b.gif)
 
-### DOUBLE_PANEL_SINGLE_SWING_OPPOSITE_LEFT
+### DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT
 Door with two panels that both open to the left, one panel swings in one direction and the other panel swings in the opposite direction.
 
 > NOTE  Direction of swing (whether in or out) is determined at the <em>IfcDoor</em>.
 
 ![opposite left](../../../../figures/ifcdoortypeenum-fig07.gif)
 
-### DOUBLE_PANEL_SINGLE_SWING_OPPOSITE_RIGHT
+### DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT
 Door with two panels that both open to the right, one panel swings in one direction and the other panel swings in the opposite direction.
 
 > NOTE  Direction of swing (whether in or out) is determined at the <em>IfcDoor</em>.
@@ -78,8 +78,8 @@ Door with one panel that swings in both directions and to the right in the main 
 
 ![double swing right](../../../../figures/ifcdoortypeenum-fig05b.gif)
 
-### DOUBLE_PANEL_DOUBLE_SWING
-Door with two panels, one swings in both directions and to the right in the main traffic direction the other swings also in both directions and to the left in the main traffic direction.
+### DOUBLE_DOOR_DOUBLE_SWING
+Door with two panels, one swings in both directions and to the right in the main traffic direction, the other swings also in both directions and to the left in the main traffic direction.
 
 > NOTE  Direction of swing (whether in or out) is determined at the <em>IfcDoor</em>.
 
@@ -101,7 +101,7 @@ Door with one panel that is sliding to the right.
 
 ![sliding to right](../../../../figures/ifcdoortypeenum-fig10b.gif)
 
-### DOUBLE_PANEL_SLIDING
+### DOUBLE_DOOR_SLIDING
 Door with two panels, one is sliding to the left the other is sliding to the right.
 
 ![double sliding](../../../../figures/ifcdoortypeenum-fig11.gif)
@@ -122,14 +122,14 @@ Door with one panel that is folding to the right.
 
 ![folding to right](../../../../figures/ifcdoortypeenum-fig13b.gif)
 
-### DOUBLE_PANEL_FOLDING
-Door with two panels, one is folding to the left the other is folding to the right.
+### DOUBLE_DOOR_FOLDING
+Door with two panels, one is folding to the left, the other is folding to the right.
 
 ![double folding](../../../../figures/ifcdoortypeenum-fig14.gif)
 
 ![double folding](../../../../figures/ifcdoortypeenum-fig14b.gif)
 
-### REVOLVING_HORIZONTAL
+### REVOLVING
 An entrance door consisting of four leaves set in a form of a cross and revolving around a central vertical axis (the four panels are described by a single _IfcDoor_ panel property).
 
 ![revolving](../../../../figures/ifcdoortypeenum-fig15.gif)
@@ -162,7 +162,7 @@ of the positive y-axis.
 
 ![swinging right and fixed](../../../../figures/ifcdoortypeenum-fig19b.gif)
 
-### DOUBLE_PANEL_LIFTING_VERTICAL
+### DOUBLE_DOOR_LIFTING_VERTICAL
 Double panel lifting vertical
 
 ### LIFTING_HORIZONTAL

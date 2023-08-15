@@ -8,14 +8,13 @@ import tabulate
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-import express_parser
-import nodes
+from ifcopenshell.express import express_parser
 
 fn1, fn2, output = sys.argv[1:]
 
 print("Running difference", *sys.argv[1:])
 
-schema_name_re = re.compile(r"ifc4x3_\w+")
+schema_name_re = re.compile(r"ifc4x\d_\w+")
 
 ERROR_TYPES_LABELS = "Missing data", "Type definitions", "Entity definitions", "Constraints"
 MISSING_DATA, TYPE_DEFINITIONS, ENTITY_DEFINITIONS, CONSTRAINTS = ERROR_TYPES_LABELS
@@ -23,16 +22,16 @@ MISSING_DATA, TYPE_DEFINITIONS, ENTITY_DEFINITIONS, CONSTRAINTS = ERROR_TYPES_LA
 def eq(a, b):
     if (type(a) != type(b)):
         return False
-    elif isinstance(a, (nodes.StringType, nodes.AggregationType, nodes.BinaryType, str, nodes.ExplicitAttribute, nodes.InverseAttribute, nodes.SimpleType)):
+    elif isinstance(a, (express_parser.StringType, express_parser.AggregationType, express_parser.BinaryType, str, express_parser.ExplicitAttribute, express_parser.InverseAttribute, express_parser.SimpleType)):
         return str(a) == str(b)
-    elif isinstance(a, (nodes.SelectType, nodes.EnumerationType)):
+    elif isinstance(a, (express_parser.SelectType, express_parser.EnumerationType)):
         return set(map(str, a.values)) == set(map(str, b.values))
     else:
         # @todo
         import pdb; pdb.set_trace()
         
 def format(a):
-    if isinstance(a, (nodes.SelectType, nodes.EnumerationType)):
+    if isinstance(a, (express_parser.SelectType, express_parser.EnumerationType)):
         return ", ".join(sorted(map(str, a.values)))
     else:
         return str(a)
@@ -101,13 +100,13 @@ def compare(fn1, fn2, m1, m2):
                 w2 = dict(cv2)[wnm]
                                 
                 # replace schema names              
-                w1 = schema_name_re.sub("ifc4x3_dev", w1)
-                w2 = schema_name_re.sub("ifc4x3_dev", w2)
+                w1 = schema_name_re.sub("ifc4x_dev", w1)
+                w2 = schema_name_re.sub("ifc4x_dev", w2)
                 
                 if w1 != w2:
                     if isinstance(wnm, (tuple, list)):
                         wnm = wnm[-1]
-                    yield CONSTRAINTS, (e + "." + wnm, w1, w2)
+                    yield CONSTRAINTS, (e + "." + wnm, w1.replace('|', 'l'), w2.replace('|', 'l'))
         
 with open(output, "w") as f:
     all_items = sorted(

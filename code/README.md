@@ -129,7 +129,7 @@ Do not use this
  * Use asterisks
  * For unordered lists
 
- - Do not use dashses
+ - Do not use dashes
  - For unordered lists
 
  1. Use numbers for numbered lists
@@ -273,6 +273,8 @@ Table XYZ - A table of things.
 
 Similar to figures, tables can also be annotated with an arbitrary code of your
 choice, which you can refer to later.
+
+### Equations
 
 If you need to render an equation, simply include it using LaTeX:
 
@@ -485,47 +487,31 @@ wget https://cdn.jsdelivr.net/npm/mathjax\@3.2.0/es5/output/svg/fonts/tex.js
 Typically for hosting a production version of this website, you can choose to
 deploy a container running the website using Docker.
 
-```bash
-$ cd code/
+The system uses docker-compose with nginx for serving HTTPS and HTTP
+basic auth. It requires running the following steps:
 
-# Build a new system image called "ifcdoc"
-$ docker build -t "ifcdoc" .
+```
+# in case of ISO mode
+htpasswd -b proxy/auth/.htpasswd $USERNAME $PASSWORD
 
-# Let's see the image we just created
-$ docker images
-REPOSITORY   TAG           IMAGE ID       CREATED          SIZE
-ifcdoc       latest        df699a56028f   12 seconds ago   3GB
+docker run -it -v $PWD/proxy/cert:/etc/letsencrypt \
+  -p 80:80 \
+  certbot/certbot certonly --standalone --register-unsafely-without-email --agree-tos --cert-name host \
+  -d $DOMAIN_NAME
 
-# Run the image we created in a new container called "ifcdoc-container", with our local port 8080 mapped to the container's port 80
-$ docker run -p 8080:80 --name "ifcdoc-container" -d "ifcdoc"
-
-# Check running Docker processes to confirm that the container is running
-$ docker ps
-CONTAINER ID   IMAGE    COMMAND                  CREATED          STATUS          PORTS                                   NAMES
-0d4b0775cf29   ifcdoc   "/bin/sh -c 'supervi…"   12 seconds ago   Up 11 seconds   0.0.0.0:8080->80/tcp, :::8080->80/tcp   ifcdoc-container
+docker compose up -d --build
 ```
 
-Now you can visit the containerized deployment in your browser by visiting
-`http://localhost:8080`.
+### Faster redeployment
 
-You can stop the Docker container as follows:
+Rebuilding the various schema, pset and changelog artefacts takes a considerable amount of time during which the webserver is only partially available. The overall process of redeployment can be sped up by taking these resources from an existing container:
 
-```bash
-$ docker stop ifcdoc-container
-
-# Check running processes (-a flag shows all processes) to ensure it has exited
-$ docker ps -a
-CONTAINER ID   IMAGE    COMMAND                  CREATED         STATUS                        PORTS   NAMES
-0d4b0775cf29   ifcdoc   "/bin/sh -c 'supervi…"   3 minutes ago   Exited (137) 32 seconds ago           ifcdoc-container
+```
+mkdir -p /tmp/ifc43-resources
+docker exec $(docker ps -q --filter name=app) /bin/sh -c 'tar -cf - /code/*.json' | tar -xvf - -C /tmp/ifc43-resources --strip-components=1
+docker compose down
+docker compose up -d --build --force-recreate
+find -type f /tmp/ifc43-resources | xargs -n1 -I{} docker cp {} $(docker ps -q --filter name=app):/code
 ```
 
-Then you can start it again:
-
-```bash
-$ docker start ifcdoc-container
-
-# Check running Docker processes to confirm that the container is running
-$ docker ps
-CONTAINER ID   IMAGE    COMMAND                  CREATED         STATUS         PORTS                                   NAMES
-0d4b0775cf29   ifcdoc   "/bin/sh -c 'supervi…"   5 minutes ago   Up 3 seconds   0.0.0.0:8080->80/tcp, :::8080->80/tcp   ifcdoc-container
-```
+Note that this doesn't include all resources and also doesn't populate the search index (but shouldn't interfere with these being created).

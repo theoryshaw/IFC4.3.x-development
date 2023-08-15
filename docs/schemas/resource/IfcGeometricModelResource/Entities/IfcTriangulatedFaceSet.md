@@ -53,8 +53,7 @@ IfcCartesianPointList3D:
 
 > HISTORY  New entity in IFC4.
 
-{ .spec-head}
-Informal Propositions:
+## Informal Propositions
 
 1. If _Closed_ = TRUE, the same topological constraints as imposed by an faceted boundary representation shall be safisfied. In particular:
     * each face shall be unique;
@@ -68,6 +67,9 @@ An ordered list of three directions for normals. It is a two-dimensional list of
 values.
 * The first dimension corresponds to the vertex indices of the _Coordindex_
 * The second dimension has exactly three values, [1] the x-direction, [2] the y-direction and [3] the z-directions
+
+### Closed
+Indication whether the face set is a closed shell (TRUE) or an open shell (FALSE). If omitted no such information can be asserted.
 
 ### CoordIndex
 Two-dimensional list for the indexed-based triangles, where

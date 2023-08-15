@@ -27,7 +27,7 @@ Orthogonal height relative to the vertical datum specified.
 > NOTE  for right-handed Cartesian coordinate systems this would establish the location along the z axis
 
 ### XAxisAbscissa
-Specifies the value along the easing axis of the end point of a vector indicating the position of the local x axis of the engineering coordinate reference system.
+Specifies the value along the easting axis of the end point of a vector indicating the position of the local x axis of the engineering coordinate reference system.
 > NOTE 1 for right-handed Cartesian coordinate systems this would establish the location along the x axis
 
 > NOTE 2 together with the _XAxisOrdinate_ it provides the direction of the local x axis within the horizontal plane of the map coordinate system
@@ -43,9 +43,3 @@ _XAxisAbscissa_ it provides the direction of the local x axis within the horizon
 
 ### Scale
 Scale to be used, when the units of the CRS are not identical to the units of the engineering coordinate system. If omitted, the value of 1.0 is assumed.
-
-### ScaleY
-Scale Y by which the length measures in local engineering CS have to be multiplied to get map coordinates
-
-### ScaleZ
-Scale Z by which the length measures in local engineering CS have to be multiplied to get map coordinates

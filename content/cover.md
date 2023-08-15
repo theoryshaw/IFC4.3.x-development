@@ -1,8 +1,8 @@
-# IFC 4.3.0.1
+# IFC 4.3.x
 
 ## Content
 
-This is the **latest** available documentation for IFC 4.3.0.1 specification. This is a Continuous improvement on the IFC 4.3.0 that has become final in March 2022.
+This is the **latest** available documentation for IFC 4.3.x specification. 
 It is automatically generated from the latest published [XMI](https://github.com/buildingSMART/IFC4.3.x-development/tree/master/schemas) (with the IFC schema) and [Markdown content](https://github.com/buildingSMART/IFC4.3.x-development/tree/master/docs) (with the definitions and documentations).
 This is **not** a formal release. Formal releases are available on [standards.buildingsmart.org](https://standards.buildingsmart.org/IFC/).
 
@@ -30,5 +30,5 @@ Parts of the IFC documentation contain material based on other international sta
 
 ### Correspondence Notice
 
-Prior written consent is required if you want to use IFC and/or the documentation in situations that are not covered by the CC BY-NC-ND 4.0 license.
+Prior written consent is required if you want to use IFC and/or the documentation in situations that are not covered by the CC BY-ND 4.0 license.
 Written requests should be addressed to: buildingSMART International Limited, Kings House, Station Road, Kings Langley, Hertfordshire, WD4 8LZ, UK. Email [contact@buildingsmart.org](mailto:contact@buildingsmart.org).

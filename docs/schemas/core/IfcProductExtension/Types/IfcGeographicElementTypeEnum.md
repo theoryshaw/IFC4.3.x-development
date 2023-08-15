@@ -12,6 +12,8 @@ Terrain
 ### SOIL_BORING_POINT
 Soil boring point
 
+> IFC4.3.0.0 DEPRECATION Use IfcBorehole instead.
+
 ### VEGETATION
 Plant life or plant cover (as of an area). For example trees, shrubs, herbs, grasses, ferns, and mosses.
 
